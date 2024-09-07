@@ -39,12 +39,12 @@ func (r *ReservationRepository) CreateReservation(ctx context.Context, reservati
 
 	var id string
 	query = `
-		INSERT INTO reservations (room_id, start_time, end_time)
-		VALUES ($1, $2, $3)
+		INSERT INTO reservations (id, room_id, start_time, end_time)
+		VALUES ($1, $2, $3, $4)
 		RETURNING id
 	`
 
-	err = r.DB.QueryRow(ctx, query, reservation.RoomID, reservation.StartTime, reservation.EndTime).Scan(&id)
+	err = r.DB.QueryRow(ctx, query, reservation.ID, reservation.RoomID, reservation.StartTime, reservation.EndTime).Scan(&id)
 	if err != nil {
 		return "", err
 	}

@@ -29,14 +29,26 @@ func (s *ReservationService) CreateReservation(ctx context.Context, reservation 
 	var err error
 	newReservation.StartTime, newReservation.EndTime, err = parseTimes(reservation.StartTime, reservation.EndTime)
 	if err != nil {
+		s.logger.Error(err)
 		return "", err
 	}
 
-	return s.repository.Reservation.CreateReservation(ctx, newReservation)
+	id, err := s.repository.Reservation.CreateReservation(ctx, newReservation)
+	if err != nil {
+		s.logger.Error(err)
+		return "", err
+	}
+	return id, nil
 }
 
 func (s *ReservationService) GetReservationsByRoomID(ctx context.Context, roomID string) ([]model.Reservation, error) {
-	return s.repository.Reservation.GetReservationsByRoomID(ctx, roomID)
+	reservations, err := s.repository.Reservation.GetReservationsByRoomID(ctx, roomID)
+	if err != nil {
+		s.logger.Error(err)
+		return nil, err
+	}
+
+	return reservations, nil
 }
 
 func parseTimes(startTimeStr, endTimeStr string) (time.Time, time.Time, error) {
@@ -53,6 +65,11 @@ func parseTimes(startTimeStr, endTimeStr string) (time.Time, time.Time, error) {
 
 	if startTime.After(endTime) {
 		return time.Time{}, time.Time{}, errors.New("start time must be before end time")
+	}
+
+	now := time.Now().UTC()
+	if startTime.Before(now) {
+		return time.Time{}, time.Time{}, errors.New("start time must be in the future")
 	}
 
 	return startTime, endTime, nil

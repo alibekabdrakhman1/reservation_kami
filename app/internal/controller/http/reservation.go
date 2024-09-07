@@ -38,11 +38,13 @@ func (h *Reservation) CreateReservation(w http.ResponseWriter, r *http.Request) 
 			return
 		}
 
-		response.RespondWithCustomResponse(w, response.ErrorHeader("Failed to create reservation", http.StatusInternalServerError), nil)
+		response.RespondWithCustomResponse(w, response.ErrorHeader(err.Error(), http.StatusInternalServerError), nil)
 		return
 	}
-
-	response.RespondWithCustomResponse(w, response.SuccessHeader, id)
+	type res struct {
+		ReservationUUID string `json:"reservation_uuid"`
+	}
+	response.RespondWithCustomResponse(w, response.SuccessHeader, res{id})
 }
 
 func (h *Reservation) GetReservationsByRoomID(w http.ResponseWriter, r *http.Request) {
