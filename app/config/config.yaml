@@ -1,0 +1,10 @@
+HttpServer:
+  Port: 8080
+  ShutdownTimeout: 2s
+Database:
+  Host: 'localhost'
+  Port: '5432'
+  Username: 'postgres'
+  Password: 'qwerty'
+  Database: 'reservation'
+  SslMode: 'disable'

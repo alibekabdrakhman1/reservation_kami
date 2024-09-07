@@ -1,0 +1,11 @@
+package repository
+
+import (
+	"context"
+	"reservation/app/internal/model"
+)
+
+type IReservationRepository interface {
+	CreateReservation(ctx context.Context, reservation *model.Reservation) (string, error)
+	GetReservationsByRoomID(ctx context.Context, roomID string) ([]model.Reservation, error)
+}
