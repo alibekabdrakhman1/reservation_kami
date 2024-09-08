@@ -4,12 +4,12 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/config"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/controller/http"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"log"
 	http2 "net/http"
-	"reservation/app/internal/config"
-	"reservation/app/internal/controller/http"
 	"time"
 )
 

@@ -1,8 +1,8 @@
 package http
 
 import (
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/service"
 	"go.uber.org/zap"
-	"reservation/app/internal/service"
 )
 
 type Manager struct {

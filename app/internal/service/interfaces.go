@@ -2,7 +2,7 @@ package service
 
 import (
 	"context"
-	"reservation/app/internal/model"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/model"
 )
 
 type IReservationService interface {

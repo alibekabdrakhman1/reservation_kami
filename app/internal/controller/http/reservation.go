@@ -3,12 +3,12 @@ package http
 import (
 	"encoding/json"
 	"errors"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/model"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/service"
+	"github.com/alibekabdrakhman1/reservation_kami/app/pkg/response"
 	"github.com/go-chi/chi"
 	"go.uber.org/zap"
 	"net/http"
-	"reservation/app/internal/model"
-	"reservation/app/internal/service"
-	"reservation/app/pkg/response"
 )
 
 type Reservation struct {

@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/app"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/config"
 	"go.uber.org/zap"
-	"reservation/app/internal/app"
-	"reservation/app/internal/config"
 )
 
 func main() {

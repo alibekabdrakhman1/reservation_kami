@@ -3,22 +3,20 @@ package service
 import (
 	"context"
 	"errors"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/model"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/repository"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
-	"reservation/app/internal/config"
-	"reservation/app/internal/model"
-	"reservation/app/internal/repository"
 	"time"
 )
 
 type ReservationService struct {
 	repository *repository.Manager
-	config     *config.Config
 	logger     *zap.SugaredLogger
 }
 
-func NewReservationService(repository *repository.Manager, config *config.Config, logger *zap.SugaredLogger) *ReservationService {
-	return &ReservationService{repository: repository, config: config, logger: logger}
+func NewReservationService(repository *repository.Manager, logger *zap.SugaredLogger) *ReservationService {
+	return &ReservationService{repository: repository, logger: logger}
 }
 
 func (s *ReservationService) CreateReservation(ctx context.Context, reservation *model.InputReservation) (string, error) {

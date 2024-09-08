@@ -2,8 +2,8 @@ package postgre
 
 import (
 	"context"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/model"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"reservation/app/internal/model"
 )
 
 type ReservationRepository struct {

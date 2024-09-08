@@ -2,7 +2,7 @@ package repository
 
 import (
 	"context"
-	"reservation/app/internal/model"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/model"
 )
 
 type IReservationRepository interface {

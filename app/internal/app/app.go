@@ -2,16 +2,16 @@ package app
 
 import (
 	"context"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/config"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/controller"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/controller/http"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/repository"
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/service"
+	"github.com/alibekabdrakhman1/reservation_kami/app/pkg/db"
 	"go.uber.org/zap"
 	"log"
 	"os"
 	"os/signal"
-	"reservation/app/internal/config"
-	"reservation/app/internal/controller"
-	"reservation/app/internal/controller/http"
-	"reservation/app/internal/repository"
-	"reservation/app/internal/service"
-	"reservation/app/pkg/db"
 )
 
 type App struct {
@@ -38,7 +38,7 @@ func (a *App) Run() error {
 
 	repo := repository.NewManager(db)
 
-	srv := service.NewManager(repo, a.config, a.logger)
+	srv := service.NewManager(repo, a.logger)
 
 	handler := http.NewManager(srv, a.logger)
 

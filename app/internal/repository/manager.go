@@ -1,8 +1,8 @@
 package repository
 
 import (
+	"github.com/alibekabdrakhman1/reservation_kami/app/internal/repository/postgre"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"reservation/app/internal/repository/postgre"
 )
 
 type Manager struct {
